@@ -116,14 +116,14 @@ export async function summarizeHistoryNL(
   if (realExpenses.length === 0) return "No actual expenses to summarize yet!";
 
   const expenseStrings = realExpenses.map(e => 
-    `- ${memberMap[e.paid_by]} paid £${e.amount} for "${e.description}" on ${e.date}`
+    `- ${memberMap[e.paid_by]} paid $${e.amount} for "${e.description}" on ${e.date}`
   );
 
   const balanceStrings = Object.entries(netBalances).map(([id, bal]) => {
     const name = memberMap[id];
     if (!name) return '';
-    if (bal > 0.01) return `${name} is owed £${bal.toFixed(2)}`;
-    if (bal < -0.01) return `${name} owes £${Math.abs(bal).toFixed(2)}`;
+    if (bal > 0.01) return `${name} is owed $${bal.toFixed(2)}`;
+    if (bal < -0.01) return `${name} owes $${Math.abs(bal).toFixed(2)}`;
     return `${name} is perfectly settled up`;
   }).filter(Boolean);
 
