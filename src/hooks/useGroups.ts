@@ -69,7 +69,7 @@ export function useGroups() {
         let userPaidTotal = 0;
         let userOweTotal = 0;
 
-        const myMember = group.group_members.find(m => m.user_id === user.id);
+        const myMember = group.group_members.find((m: any) => m.user_id === user.id);
         const myMemberId = myMember?.id;
 
         groupExpenses.forEach(expense => {
